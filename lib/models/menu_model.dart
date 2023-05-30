@@ -117,13 +117,15 @@ class _MenuGridState extends State<MenuGrid> {
     //   ),
     // );
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .4,
+      // height: MediaQuery.of(context).size.height *.4,
       width: MediaQuery.of(context).size.width * .8,
-      child: GridView.count(
-        crossAxisCount: 3,
-        children: List.generate(widget.iconData.length, (index) {
-          return SizedBox(
-            child: Card(
+      child: SingleChildScrollView(
+        child: GridView.count(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          crossAxisCount: 3,
+          children: List.generate(widget.iconData.length, (index) {
+            return Card(
               color: AppColors().cardColor,
               child: InkWell(
                 onTap: () async {
@@ -160,9 +162,9 @@ class _MenuGridState extends State<MenuGrid> {
                       ]),
                 ),
               ),
-            ),
-          );
-        }),
+            );
+          }),
+        ),
       ),
     );
   }
