@@ -117,12 +117,12 @@ class Widgets {
               )),
           Visibility(
               visible: closestB, // The boolean condition
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
+              child: const Padding(
+                padding: EdgeInsets.only(left: 20),
                 child: Column(
                   children: [
                     Row(
-                      children: const [
+                      children: [
                         Icon(Icons.brightness_1, size: 6),
                         SizedBox(
                           width: 10,
@@ -133,11 +133,11 @@ class Widgets {
                         ),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 5,
                     ),
                     Row(
-                      children: const [
+                      children: [
                         Icon(Icons.brightness_1, size: 6),
                         SizedBox(
                           width: 10,
@@ -148,11 +148,11 @@ class Widgets {
                         ),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 5,
                     ),
                     Row(
-                      children: const [
+                      children: [
                         Icon(Icons.brightness_1, size: 6),
                         SizedBox(
                           width: 10,
