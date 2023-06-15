@@ -88,9 +88,9 @@ class DatabaseServices {
   }
 
   Future fetchChatDtoStoreId() async {
-    int id = 1;
+    int id = 3;
     final response = await http
-        .get(Uri.parse('https://localhost:7053/api/ChatAPI/id?id=$id'));
+        .get(Uri.parse('https://localhost:7053/api/ChatAPI/Id?id=$id'));
     final responseData = json.decode(response.body);
 
     if (response.statusCode == 200) {
@@ -99,6 +99,37 @@ class DatabaseServices {
       // ignore: prefer_interpolation_to_compose_strings
       throw Exception('Failed to fetch chat DTO: ' + responseData['title']);
     }
+  }
+
+  Future postComp() async {
+    MessageBody body = MessageBody(id: 0, name: 'Blue Blue Blue');
+    Map<String, dynamic> jsonBody = body.toJson();
+
+    final response = await http.post(
+      Uri.parse('https://localhost:7053/api/ChatAPI/'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode(jsonBody),
+    );
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return 'Success';
+    } else {
+      return 'Failed to send';
+    }
+  }
+}
+
+class MessageBody {
+  int id;
+  String name;
+
+  MessageBody({required this.id, required this.name});
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+    };
   }
 }
 

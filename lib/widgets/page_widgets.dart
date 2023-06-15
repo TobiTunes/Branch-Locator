@@ -53,10 +53,15 @@ class Widgets {
       {bool reasonB = false, bool closestB = false, bool complaintsB = false}) {
     // double h = MediaQuery.of(context).size.height * .7;
     double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return Expanded(
       child: Container(
         margin: const EdgeInsets.only(top: 30, right: 3, left: 3),
-        padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+        padding: reasonB
+            ? const EdgeInsets.only(
+                top: 20,
+              )
+            : const EdgeInsets.only(top: 20, right: 20, left: 20),
         width: w,
         color: const Color.fromRGBO(217, 217, 217, 1),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -77,8 +82,8 @@ class Widgets {
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                )), // The widget to display if the condition is true
+                  color: Color.fromRGBO(0, 59, 101, 1),
+                )),
           ),
           Visibility(
             visible: complaintsB, // The boolean condition
@@ -170,20 +175,58 @@ class Widgets {
           const SizedBox(height: 10),
           Visibility(
             visible: reasonB, // The boolean condition
-            child: ReasonForVisitingModel(
-                textMsg: Constants()
-                    .textMsg), // The widget to display if the condition is true
-          ),
-          Visibility(
-            visible: closestB, // The boolean condition
-            child: ClosestBranchesModel(
-              branchList: Constants().cardList,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ReasonForVisitingModel(
+                  textMsg: Constants().textMsg,
+                  iconData: Constants().iconsReasons,
+                ),
+                const SizedBox(
+                  height: 80,
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 16, bottom: 5),
+                  child: Text(
+                    "MY ADS",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.black,
+                        letterSpacing: 0),
+                  ),
+                ),
+                Image(
+                  image: const AssetImage('images/fbn_ad.png'),
+                  height: h * .2,
+                  width: w,
+                  fit: BoxFit.fill,
+                ),
+              ],
             ), // The widget to display if the condition is true
           ),
+
           Visibility(
-            visible: complaintsB, // The boolean condition
-            child:
-                const ComplaintsModel(), // The widget to display if the condition is true
+            visible: closestB,
+            child: const Text(
+              "Nearby Branches",
+              style: TextStyle(
+                color: Color.fromRGBO(0, 59, 101, 1),
+                fontSize: 16,
+                letterSpacing: 1,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          Visibility(
+            visible: closestB,
+            child: ClosestBranchesModel(
+              branchList: Constants().cardList,
+            ),
+          ),
+          Visibility(
+            visible: complaintsB,
+            child: const ComplaintsModel(),
           ),
           // reasonB
           //     ? ReasonForVisitingModel(textMsg: Constants().textMsg)

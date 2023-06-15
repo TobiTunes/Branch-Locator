@@ -18,7 +18,7 @@ class ClosestBranchesModel extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           final branch = branchList[index];
           return Container(
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+            padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 0),
             child: Card(
               color: Colors.white,
               child: InkWell(
@@ -29,7 +29,8 @@ class ClosestBranchesModel extends StatelessWidget {
                   );
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -42,8 +43,8 @@ class ClosestBranchesModel extends StatelessWidget {
                               branch.branchName,
                               style: const TextStyle(
                                 color: Color.fromRGBO(0, 59, 101, 1),
-                                fontSize: 16,
-                                letterSpacing: 1,
+                                fontSize: 15,
+                                letterSpacing: 0,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -81,35 +82,35 @@ class ClosestBranchesModel extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: ((context) => const Complaints())));
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            FaIcon(
-                              Icons.report,
-                              size: 28,
-                              color: Colors.red[400],
-                            ),
-                            const Text(
-                              "Report",
-                              style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 14,
-                                letterSpacing: 1,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      // const SizedBox(
+                      //   width: 10,
+                      // ),
+                      // GestureDetector(
+                      //   onTap: () {
+                      //     Navigator.push(
+                      //         context,
+                      //         MaterialPageRoute(
+                      //             builder: ((context) => const Complaints())));
+                      //   },
+                      //   child: Column(
+                      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      //     children: [
+                      //       FaIcon(
+                      //         Icons.report,
+                      //         size: 28,
+                      //         color: Colors.red[400],
+                      //       ),
+                      //       const Text(
+                      //         "Report",
+                      //         style: TextStyle(
+                      //           color: Colors.black87,
+                      //           fontSize: 14,
+                      //           letterSpacing: 1,
+                      //         ),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),

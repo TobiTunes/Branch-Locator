@@ -21,9 +21,9 @@ class _MapsScreenState extends State<MapsScreen> with TickerProviderStateMixin {
   int selectedIndex = 0;
   LatLng currentLocation = MapConstants.myLocation;
   // LatLng currentLocation = MapConstants.currentLocation;
-  LatLng mapCenter = MapConstants.myLocation;
+  LatLng mapCenter = MapConstants.myLocation; //this isn;t there
   late final MapController mapController;
-  List<Polyline> polylines = [];
+  List<Polyline> polylines = []; //this isn;t there
 
   @override
   void initState() {
@@ -31,19 +31,18 @@ class _MapsScreenState extends State<MapsScreen> with TickerProviderStateMixin {
     mapController = MapController();
   }
 
-  // Future<void> calculateMidpoint(LatLng locationData) async {
-  //   setState(() {
-  //     mapCenter = getMidpoint(locationData, currentLocation);
-  //   });
-  // }
+  Future<void> setMidPoint(LatLng locationData) async {
+    setState(() {
+      mapCenter = getMidpoint(currentLocation, locationData);
+    });
+  }
 
-  // LatLng getMidpoint(LatLng location1, LatLng location2) {
-  //   final double avgLat = (location1.latitude + location2.latitude) / 2;
-  //   final double avgLng = (location1.longitude + location2.longitude) / 2;
-  //   print('The mid point is ');
-  //   print(LatLng(avgLat, avgLng));
-  //   return LatLng(avgLat, avgLng);
-  // }
+  LatLng getMidpoint(LatLng location1, LatLng location2) {
+    final double avgLat = (location1.latitude + location2.latitude) / 2;
+    final double avgLng = (location1.longitude + location2.longitude) / 2;
+    print('The mid point is ${LatLng(avgLat, avgLng)}');
+    return LatLng(avgLat, avgLng);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,42 +111,59 @@ class _MapsScreenState extends State<MapsScreen> with TickerProviderStateMixin {
                     height: 80,
                     width: 80,
                     point: currentLocation,
-                    builder: (_) => const Icon(
-                          FontAwesomeIcons.locationPin,
-                          color: Colors.blue,
-                        )),
+                    builder: (_) {
+                      return const Icon(
+                        FontAwesomeIcons.locationPin,
+                        color: Colors.blue,
+                      );
+                    }),
                 for (int i = 0; i < mapMarkers.length; i++)
                   Marker(
-                    height: 80,
-                    width: 80,
-                    point: mapMarkers[i].location ?? currentLocation,
-                    builder: (_) {
-                      return GestureDetector(
-                        onTap: () {
-                          selectedIndex = i;
-                          pageController.animateToPage(i,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOut);
-                          mapCenter = mapMarkers[i].location ?? currentLocation;
-                          // calculateMidpoint(mapMarkers[i].location!);
-                          animatedMapMove(currentLocation, 15.0);
-                          setState(() {});
-                        },
-                        child: AnimatedScale(
-                          duration: const Duration(milliseconds: 500),
-                          scale: selectedIndex == i ? 1 : 0.7,
-                          child: AnimatedOpacity(
+                      height: 80,
+                      width: 80,
+                      point: mapMarkers[i].location ?? currentLocation,
+                      builder: (_) {
+                        return GestureDetector(
+                          onTap: () {
+                            if (kDebugMode) {
+                              print('The $i was tapped');
+                            }
+                            pageController.animateToPage(i,
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut);
+                            // mapCenter =
+                            //     mapMarkers[i].location ?? currentLocation;
+                            setMidPoint(mapMarkers[i].location!);
+                            animatedMapMove(mapCenter, 15.0);
+                            // animatedMapMove(currentLocation, 15.0);
+                            selectedIndex = i;
+                            final polyline = Polyline(
+                              points: [
+                                currentLocation,
+                                mapMarkers[selectedIndex].location ??
+                                    currentLocation,
+                              ],
+                              color: Colors.blue,
+                              strokeWidth: 7.0,
+                            );
+                            setState(() {
+                              polylines = [polyline];
+                            });
+                          },
+                          child: AnimatedScale(
                             duration: const Duration(milliseconds: 500),
-                            opacity: selectedIndex == i ? 1 : 0.5,
-                            child: const FaIcon(
-                              FontAwesomeIcons.locationPin,
-                              color: Colors.red,
+                            scale: selectedIndex == i ? 1 : 0.7,
+                            child: AnimatedOpacity(
+                              duration: const Duration(milliseconds: 500),
+                              opacity: selectedIndex == i ? 1 : 0.5,
+                              child: const FaIcon(
+                                FontAwesomeIcons.locationPin,
+                                color: Colors.red,
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                  )
+                        );
+                      }),
               ]),
               PolylineLayerOptions(polylines: polylines),
               PolylineLayerOptions(
@@ -173,10 +189,11 @@ class _MapsScreenState extends State<MapsScreen> with TickerProviderStateMixin {
               controller: pageController,
               onPageChanged: (value) {
                 selectedIndex = value;
-                mapCenter =
-                    mapMarkers[value].location ?? MapConstants.currentLocation;
-                // calculateMidpoint(mapMarkers[value].location!);
-                animatedMapMove(currentLocation, 15.0);
+                // mapCenter =
+                //     mapMarkers[value].location ?? MapConstants.currentLocation;
+                setMidPoint(mapMarkers[value].location!);
+                // animatedMapMove(currentLocation, 15);
+                animatedMapMove(mapCenter, 15);
                 final polyline = Polyline(
                   points: [
                     currentLocation,

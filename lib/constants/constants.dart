@@ -35,8 +35,18 @@ class Constants {
     'ATM Card Collection',
     'FX Transaction',
     'Token Collection',
-    'ATM Transactions',
+    'Form A Transactions',
   ];
+
+  final List<IconData> iconsReasons = [
+    Icons.location_on,
+    Icons.account_balance,
+    FontAwesomeIcons.ccMastercard,
+    FontAwesomeIcons.circleDollarToSlot,
+    FontAwesomeIcons.keyboard,
+    FontAwesomeIcons.fileWaveform,
+  ];
+
   final List<String> complaintMsg = [
     'Account Opening',
     'ATM Card Collection',
