@@ -1,5 +1,5 @@
-import 'package:firstbranchlocator/responsive/desktop_body.dart';
-import 'package:firstbranchlocator/responsive/mobile_body.dart';
+import 'package:firstbranchlocator/responsive/desktop/desktop_body.dart';
+import 'package:firstbranchlocator/responsive/mobile/homescreen_mobile.dart';
 import 'package:flutter/material.dart';
 
 import '../responsive/responsive_layout.dart';
@@ -15,6 +15,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayout(
-        mobileBody: MobileBody(), desktopBody: const DesktopBody());
+        mobileBody: HomeScreenBody(), desktopBody: const DesktopBody());
   }
 }

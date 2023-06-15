@@ -28,9 +28,9 @@ final mapMarkers = [
       location: LatLng(6.490665, 3.356246)),
   MarkersMap(
       image: 'images/fbn-map-image.jpg',
-      title: 'Bode Thomas Branch',
-      address: '72, Bode Thomas Street, Surulere',
-      location: LatLng(6.506145, 3.356244)),
+      title: 'Adeniran Ogunsanya Branch',
+      address: '84, Adeniran Ogunsanya Street, Surulere',
+      location: LatLng(6.502057, 3.352403)),
   MarkersMap(
       image: 'images/fbn-map-image.jpg',
       title: 'Surulere Branch',
@@ -38,13 +38,12 @@ final mapMarkers = [
       location: LatLng(6.502208, 3.352695)),
   MarkersMap(
       image: 'images/fbn-map-image.jpg',
-      title: 'Adeniran Ogunsanya Branch',
-      address: '84, Adeniran Ogunsanya Street, Surulere',
-      location: LatLng(6.502057, 3.352403)),
-
-  MarkersMap(
-      image: 'images/fbn-map-image.jpg',
       title: 'Ojuelegba Branch',
       address: '82, Ojuelegba Road, Ojuelegba, Surulere',
       location: LatLng(6.505735, 3.357889)),
+  MarkersMap(
+      image: 'images/fbn-map-image.jpg',
+      title: 'Bode Thomas Branch',
+      address: '72, Bode Thomas Street, Surulere',
+      location: LatLng(6.506145, 3.356244)),
 ];

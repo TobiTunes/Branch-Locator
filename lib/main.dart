@@ -1,6 +1,4 @@
-import 'package:firstbranchlocator/screens/closest_branches.dart';
 import 'package:firstbranchlocator/screens/maps.dart';
-import 'package:firstbranchlocator/screens/reason.dart';
 import 'package:firstbranchlocator/services/get_documents_services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +57,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MapsScreen(),
+      home: HomeScreen(),
     );
   }
 }

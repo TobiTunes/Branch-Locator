@@ -33,7 +33,7 @@ class _MenuGridState extends State<MenuGrid> {
       if (kDebugMode) {
         print('Permission already granted');
         print(MapConstants.currentLocation);
-        print('This');
+        print('Was clicked');
       }
       // ignore: use_build_context_synchronously
       Navigator.push(context,

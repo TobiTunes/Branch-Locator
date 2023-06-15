@@ -73,10 +73,10 @@ class Constants {
       icon: Icons.place,
     ),
     BranchDetails(
-      branchName: 'BODE THOMAS BRANCH',
-      location: '72, Bode Thomas Street',
+      branchName: 'ADENIRAN OGUNSANYA BRANCH',
+      location: '53, Adeniran Ogunsanya Street',
       city: 'Surulere',
-      distance: '2.0km',
+      distance: '1.7km',
       icon: Icons.place,
     ),
     BranchDetails(
@@ -86,14 +86,6 @@ class Constants {
       distance: '2.1km',
       icon: Icons.place,
     ),
-
-    BranchDetails(
-      branchName: 'ADENIRAN OGUNSANYA BRANCH',
-      location: '53, Adeniran Ogunsanya Street',
-      city: 'Surulere',
-      distance: '2.4km',
-      icon: Icons.place,
-    ),
     BranchDetails(
       branchName: 'OJUELEGBA BRANCH',
       location: '82, Ojuelegba Road',
@@ -101,8 +93,13 @@ class Constants {
       distance: '2.7km',
       icon: Icons.place,
     ),
-
-    // Add more card details objects as needed
+    BranchDetails(
+      branchName: 'BODE THOMAS BRANCH',
+      location: '72, Bode Thomas Street',
+      city: 'Surulere',
+      distance: '2.0km',
+      icon: Icons.place,
+    ),
   ];
 
   final String mLogin = "Enter your mPin to login";

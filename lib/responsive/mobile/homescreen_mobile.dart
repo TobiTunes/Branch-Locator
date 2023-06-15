@@ -3,13 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../constants/colors.dart';
-import '../models/menu_model.dart';
-import '../widgets/page_widgets.dart';
+import '../../constants/colors.dart';
+import '../../models/menu_model.dart';
+import '../../widgets/page_widgets.dart';
 
 // ignore: must_be_immutable
-class MobileBody extends StatelessWidget {
-  MobileBody({super.key});
+class HomeScreenBody extends StatelessWidget {
+  HomeScreenBody({super.key});
 
   final Constants cb = Constants();
 
